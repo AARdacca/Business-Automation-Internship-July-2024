@@ -11,10 +11,10 @@ $(function () {
     }).datepicker('update', new Date());
 });
 
-document.addEventListener('DOMContentLoaded', function () {
-    var myCarousel = document.querySelector('#customCarousel1');
-    var carousel = new bootstrap.Carousel(myCarousel, {
-      interval: 1000,
-      wrap: true
-    });
-});
+// document.addEventListener('DOMContentLoaded', function () {
+//     var myCarousel = document.querySelector('#customCarousel1');
+//     var carousel = new bootstrap.Carousel(myCarousel, {
+//       interval: 1000,
+//       wrap: true
+//     });
+// });
