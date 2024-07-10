@@ -20,4 +20,4 @@ Please upload your assignment according to the provided instructions.
 
 Necessary logos and images can be found in our group. However, if you prefer, you are welcome to use any appropriate logos or images available online.
 
-![web-page](images\readme\web-page.png)
+![web-page](images/readme/web-page.png)
