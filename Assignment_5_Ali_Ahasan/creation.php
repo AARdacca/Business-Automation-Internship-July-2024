@@ -1,5 +1,6 @@
 <?php
-session_start()
+// Start a new session or resume the existing one
+session_start();
 ?>
 
 <!DOCTYPE html>
@@ -11,6 +12,7 @@ session_start()
 
 <body>
     <h1>User Registration Form</h1>
+    <!-- Registration form that posts data to register.php -->
     <form action="register.php" method="post">
         Name: <input type="text" name="username" required><br>
         Email: <input type="email" name="email" required><br>
@@ -22,16 +24,14 @@ session_start()
 
 </html>
 
-<br><br><br>
 <?php
-echo    "   <h3 style='display:inline;'>Already a user? </h3> 
-            <span><a href='login.php'>Log In</a></span>
-        ";
+// Link for existing users to log in
+echo "<h3 style='display:inline;'><br><br><br>Already a user? </h3> 
+      <span><a href='login.php'>Log In</a></span>";
 ?>
 
-<br><br><br>
 <?php
-echo    "   <h3 style='display:inline;'>Home Page? </h3>
-            <a href='index.php'>Go to Home</a>
-        ";
+// Link to the home page
+echo "<h3 style='display:inline;'><br><br><br>Home Page? </h3>
+      <a href='index.php'>Go to Home</a>";
 ?>
