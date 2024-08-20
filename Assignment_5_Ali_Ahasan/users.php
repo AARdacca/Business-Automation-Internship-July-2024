@@ -1,6 +1,11 @@
 <?php
 session_start();
 
+// Initialize $_SESSION['users'] as an array if not already set
+if (!isset($_SESSION['users'])) {
+    $_SESSION['users'] = array();
+}
+
 // Load users from session or cookie
 if (!isset($_SESSION['users']) && isset($_COOKIE['user_data'])) {
     $_SESSION['users'] = unserialize($_COOKIE['user_data']);
@@ -35,6 +40,13 @@ foreach ($_SESSION['users'] as $index => $user) {
 }
 echo "</ul>";
 echo "<a href='users.php?delete_all=true'>Delete All Users</a>";
+?>
+
+<br><br><br>
+<?php
+echo    "   <h3 style='display:inline;'>Home Page? </h3>
+            <a href='index.php'>Go to Home</a>
+        ";
 ?>
 
 <?
