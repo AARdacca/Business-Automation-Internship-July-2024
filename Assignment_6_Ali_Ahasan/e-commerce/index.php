@@ -4,76 +4,80 @@ require_once 'Product.php';
 require_once 'Cart.php';
 require_once 'Checkout.php';
 
-
-$cart = new Cart();
-$products = [];
-
-function isLoggedIn()
+class Index
 {
-    return isset($_SESSION['logged_in_check']) && $_SESSION['logged_in_check'] == 1;
-}
+    public $cart;
+    public $products;
+    public $message;
 
-// $products = [
-//     new Product(1, "Laptop", 1000),
-//     new Product(2, "Smartphone", 500),
-//     new Product(3, "Tablet", 300)
-// ];
+    public function __construct()
+    {
+        $this->cart = new Cart();
+        $this->products = $this->loadProducts();
+        $this->message = "";
+        $this->processActions();
+    }
 
-// Load JSON file
+    private function isLoggedIn()
+    {
+        return isset($_SESSION['logged_in_check']) && $_SESSION['logged_in_check'] == 1;
+    }
 
-// Attempt to read the file from the 'e-commerce' directory
-$filePath = 'e-commerce/products.json';
+    private function loadProducts()
+    {
+        $filePath = 'e-commerce/products.json';
+        if (!file_exists($filePath)) {
+            $filePath = 'products.json';
+        }
+        $json = file_get_contents($filePath);
+        $productsData = json_decode($json, true);
 
-if (!file_exists($filePath)) {
-    // If the file is not found in the 'e-commerce' directory, try the root directory
-    $filePath = 'products.json';
-}
-$json = file_get_contents($filePath);
+        $products = [];
+        foreach ($productsData as $productData) {
+            $products[] = new Product($productData['id'], $productData['name'], $productData['price']);
+        }
+        return $products;
+    }
 
-// Decode the JSON data into an associative array
-$productsData = json_decode($json, true);
+    private function processActions()
+    {
+        if (isset($_GET['add'])) {
+            $productId = $_GET['add'];
+            foreach ($this->products as $product) {
+                if ($product->getId() == $productId) {
+                    $this->cart->addProduct($product);
+                }
+            }
+        }
 
-// Initialize an empty array to hold Product objects
+        if (isset($_GET['remove'])) {
+            $productId = $_GET['remove'];
+            $this->cart->removeProduct($productId);
+        }
 
+        if (isset($_GET['checkout'])) {
+            if (!$this->isLoggedIn()) {
+                header("Location: user/login.php");
+                exit;
+            }
 
-// Iterate over each product data and create Product objects
-foreach ($productsData as $productData) {
-    $products[] = new Product($productData['id'], $productData['name'], $productData['price']);
-}
-
-
-if (isset($_GET['add'])) {
-    $productId = $_GET['add'];
-    foreach ($products as $product) {
-        if ($product->getId() == $productId) {
-            $cart->addProduct($product);
+            $checkout = new Checkout($this->cart);
+            if ($this->cart->getTotalPrice() <= 0) {
+                $this->message = "No items in cart to checkout.";
+            } else {
+                $this->message = $checkout->processCheckout();
+            }
         }
     }
-}
 
-
-if (isset($_GET['remove'])) {
-    $productId = $_GET['remove'];
-    $cart->removeProduct($productId);
-}
-
-
-
-if (isset($_GET['checkout'])) {
-
-    if (!isLoggedIn()) { // Check if the user is logged in
-        header("Location: user/login.php"); // Redirect to login page if not logged in
-        exit;
-    }
-
-    $checkout = new Checkout($cart);
-    if (($cart->getTotalPrice()) <= 0) {
-        $message = $checkout->processNotCheckout();
-    } else {
-        $message = $checkout->processCheckout();
+    public function homePage()
+    {
+        echo "<h3 style='display:inline;'><br><br><br>Home Page? </h3>
+        <a href='/assignment_6/user/'>Go to Home</a>";
     }
 }
 
+$e_commerceIndex = new Index;
 
 ?>
 
@@ -89,7 +93,7 @@ if (isset($_GET['checkout'])) {
 <body>
     <h1>Products</h1>
     <ul>
-        <?php foreach ($products as $product): ?>
+        <?php foreach ($e_commerceIndex->products as $product): ?>
             <li>
                 <?php echo $product->getName(); ?> - $<?php echo $product->getPrice(); ?>
                 <a href="?add=<?php echo $product->getId(); ?>"><button type="button">Add to Cart</button></a>
@@ -99,25 +103,23 @@ if (isset($_GET['checkout'])) {
 
     <h2>Shopping Cart</h2>
     <ul>
-        <?php foreach ($cart->getProducts() as $product): ?>
+        <?php foreach ($e_commerceIndex->cart->getProducts() as $product): ?>
             <li>
                 <?php echo $product->getName(); ?> - $<?php echo $product->getPrice(); ?>
                 <a href="?remove=<?php echo $product->getId(); ?>"><button type="button">Remove</button></a>
             </li>
         <?php endforeach; ?>
     </ul>
-    <p>Total: $<?php echo $cart->getTotalPrice(); ?></p>
+    <p>Total: $<?php echo $e_commerceIndex->cart->getTotalPrice(); ?></p>
     <a href="?checkout=true"><button type="button">Checkout</button></a>
 
-    <?php if (isset($message)): ?>
-        <p><?php echo $message; ?></p>
+    <?php if (isset($e_commerceIndex->message)): ?>
+        <p><?php echo $e_commerceIndex->message; ?></p>
     <?php endif; ?>
 </body>
 
 </html>
 
-<?php 
-    // Link to the home page
-    echo "<h3 style='display:inline;'><br><br><br>Home Page? </h3>
-          <a href='/assignment_6/user/'>Go to Home</a>";
+<?php
+$e_commerceIndex->homePage();
 ?>
