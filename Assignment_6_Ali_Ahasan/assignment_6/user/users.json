@@ -28,5 +28,11 @@
         "email": "linda.brown@example.com",
         "address": "101 Pine Ln, Orlando, FL 32801",
         "password": "$2y$10$7F\/a.jvgPiQesZzhCoY5QuoT8dk1QDAjTVaTVmBJ.Hmsv85u9IKhO"
+    },
+    {
+        "username": "Daniel Anderson",
+        "email": "daniel.anderson@example.com",
+        "address": "808 Magnolia Ave, Portland, OR 97201",
+        "password": "$2y$10$qTm3cU52KBc6bfTEREUENe2o9Hsm3ZnjoJ6c.7\/KUu0OcfKHUpzFa"
     }
 ]

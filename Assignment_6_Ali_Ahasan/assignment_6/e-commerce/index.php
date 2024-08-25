@@ -1,15 +1,18 @@
 <?php
 
+// Include required class files.
 require_once 'Product.php';
 require_once 'Cart.php';
 require_once 'Checkout.php';
 
+// Define the Index class which will handle the core functionality of the e-commerce system.
 class Index
 {
     public $cart;
     public $products;
     public $message;
 
+    // Constructor initializes the cart, loads products, and processes any actions from the request.
     public function __construct()
     {
         $this->cart = new Cart();
@@ -18,16 +21,18 @@ class Index
         $this->processActions();
     }
 
+    // Helper function to check if a user is logged in.
     private function isLoggedIn()
-    {   
+    {
         return isset($_SESSION['logged_in']) && $_SESSION['logged_in'] == 1;
     }
 
+    // Loads products from a JSON file.
     private function loadProducts()
     {
         $filePath = 'e-commerce/products.json';
         if (!file_exists($filePath)) {
-            $filePath = 'products.json';
+            $filePath = 'products.json'; // Fallback if the preferred path is not found.
         }
         $json = file_get_contents($filePath);
         $productsData = json_decode($json, true);
@@ -39,6 +44,7 @@ class Index
         return $products;
     }
 
+    // Processes actions based on GET parameters: add, remove, checkout.
     private function processActions()
     {
         if (isset($_GET['add'])) {
@@ -70,6 +76,7 @@ class Index
         }
     }
 
+    // Method to display a simple home page navigation link.
     public function homePage()
     {
         echo "<h3 style='display:inline;'><br><br><br>Home Page? </h3>
@@ -93,6 +100,7 @@ $e_commerceIndex = new Index;
 <body>
     <h1>Products</h1>
     <ul>
+        <!-- Loop through products and display them with an "Add to Cart" button. -->
         <?php foreach ($e_commerceIndex->products as $product): ?>
             <li>
                 <?php echo $product->getName(); ?> - $<?php echo $product->getPrice(); ?>
@@ -103,6 +111,7 @@ $e_commerceIndex = new Index;
 
     <h2>Shopping Cart</h2>
     <ul>
+        <!-- Loop through cart items and display them with a "Remove" button. -->
         <?php foreach ($e_commerceIndex->cart->getProducts() as $product): ?>
             <li>
                 <?php echo $product->getName(); ?> - $<?php echo $product->getPrice(); ?>
@@ -113,6 +122,7 @@ $e_commerceIndex = new Index;
     <p>Total: $<?php echo $e_commerceIndex->cart->getTotalPrice(); ?></p>
     <a href="?checkout=true"><button type="button">Checkout</button></a>
 
+    <!-- Display any messages such as errors or notifications. -->
     <?php if (isset($e_commerceIndex->message)): ?>
         <p><?php echo $e_commerceIndex->message; ?></p>
     <?php endif; ?>
@@ -121,5 +131,6 @@ $e_commerceIndex = new Index;
 </html>
 
 <?php
+// Call to display the home page link.
 $e_commerceIndex->homePage();
 ?>

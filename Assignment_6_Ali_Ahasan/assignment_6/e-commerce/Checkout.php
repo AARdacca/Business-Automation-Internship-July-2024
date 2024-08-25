@@ -1,27 +1,26 @@
 <?php
+// Define the Checkout class to handle the checkout process.
 class Checkout
 {
-    private $cart;
+    private $cart; // Private variable to store the Cart object.
 
+    // Constructor to initialize the Checkout class with a Cart object.
     public function __construct(Cart $cart)
     {
         $this->cart = $cart;
     }
 
+    // Method to process the checkout by clearing the cart and confirming the order placement.
     public function processCheckout()
     {
-        // Normally, here you would integrate with a payment gateway
-        // For simplicity, let's just clear the cart and return a success message
-        $this->cart->clearCart();
-        return "Checkout successful. Your order has been placed!";
+        $this->cart->clearCart(); // Clear all items in the cart.
+        return "Checkout successful. Your order has been placed!"; // Return success message.
     }
 
+    // Method to handle the scenario where no checkout is processed.
     public function processNotCheckout()
     {
-        // Normally, here you would integrate with a payment gateway
-        // For simplicity, let's just clear the cart and return a success message
-        $this->cart->clearCart();
-        return "Nothing ordered. Please order.";
+        $this->cart->clearCart(); // Clear the cart even if no order is processed.
+        return "Nothing ordered. Please order."; // Return message prompting to make an order.
     }
 }
-?> <?
