@@ -2,6 +2,10 @@
 
 This PHP-based e-commerce website is designed with a session-based shopping cart system and user authentication, without the need for a database.
 
+## Testing Accounts
+
+All testing accounts specified in the `user.json` file have a default password set to `123`. Please use this password to log in to any testing account.
+
 ## Prerequisites and Installation process for ➡ <b>XAMPP</b> ⬅
 
 ### Prerequisites
@@ -21,7 +25,7 @@ This PHP-based e-commerce website is designed with a session-based shopping cart
 
 3. **Access the Project:**
    - Open a web browser.
-   - Navigate to `http://localhost/assignment_6/`
+   - Navigate to `http://localhost/E_Commerce_Website_made_by_Ali_Ahasan_J2DFEEB/`
 
 
 ## Prerequisites and Installation process for ➡ <b>Laragon</b> ⬅
@@ -43,4 +47,16 @@ This PHP-based e-commerce website is designed with a session-based shopping cart
 
 3. **Access the Project:**
    - Open a web browser.
-   - Navigate to `http://localhost/assignment_6/`
+   - Navigate to `http://localhost/E_Commerce_Website_made_by_Ali_Ahasan_J2DFEEB/`
+
+
+## Further Assistance
+
+If you need any further assistance or have any queries, please feel free to contact me.
+
+## Contact
+
+### Ali Ahasan
+[GitHub](https://github.com/AARdacca)  
+[LinkedIn](https://www.linkedin.com/in/aliahasanraiyan/)  
+Call: +880 1973 301868.

@@ -69,25 +69,29 @@ class Index
         // Display welcome message based on login status
         if (isset($_SESSION['logged_in']) && $_SESSION['logged_in'] === true) {
             echo "<h1>Welcome back, " . htmlspecialchars($_SESSION['username']) . "!</h1>";
-            echo "<a href='logout.php'>Logout</a>";
+            echo "<a href='logout.php'><button type='button' style='font-size: 18px; padding: 6px 12px;'>Logout</button></a>";
         } else {
             echo "<h1>Welcome to Our Site!</h1>";
-            echo "<a href='login.php'>Login</a> | <a href='creation.php'>Register</a>";
+            echo "<a href='login.php'><button type='button' style='font-size: 16px; padding: 6px 12px;'><b>Login</b></button></a
+            > | <a href='creation.php'><button type='button' style='font-size: 16px; padding: 6px 12px;'><b>Register</b></button></a>";
+
         }
     }
 
     public function allUserList()
     {
         // Link to the users list page
-        echo "  <h3 style='display:inline;'><br><br><br>All Users Check: </h3>
-                <a href='users.php'>Users</a>";
+        if (isset($_SESSION['logged_in']) && $_SESSION['logged_in'] === true) {
+        } else {
+            echo "<h6 style='display:inline;'><br><br><br>Are you Admin? <a href='users.php'>Click Here!</a></h6>";
+        }
     }
 
     public function e_commercePage()
     {
         // Link to the e-commerce page
-        echo "  <h3 style='display:inline;'><br><br><br>Online Shop: </h3>
-                <a href='/assignment_6/e-commerce/'>Shop</a>";
+        echo "<h2><a href='/E_Commerce_Website_made_by_Ali_Ahasan_J2DFEEB/e-commerce/'><button type='button' style='font-size: 24px; padding: 10px 20px;'>Let's Shop!</button></a></h2>";
+
     }
 }
 

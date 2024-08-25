@@ -1,0 +1,32 @@
+[
+    {
+        "username": "Karen White",
+        "email": "karen.white@example.com",
+        "address": "909 Sycamore St, Boston, MA 02108",
+        "password": "$2y$10$rkLFEG4sPMFtXKDkanE3Xe\/pYBAaA2z.5X2i2jBs13FKgNmqgFPAS"
+    },
+    {
+        "username": "Andrew Clark",
+        "email": "andrew.clark@example.com",
+        "address": "1414 Cedar Ave, Sacramento, CA 95814",
+        "password": "$2y$10$deW60IJiEAmu2dwyoyREgO1U3DXwNxSZ0c0jqXz.qP4Ywnzf8\/L8G"
+    },
+    {
+        "username": "Sarah Smith",
+        "email": "sarah.smith@example.com",
+        "address": "456 Maple Ave, Dayton, OH 45402",
+        "password": "$2y$10$pHh9wCU0eRzdybsUpGYVUelN5F6Pj07IzG1KHH6uWl6Bnhx.jfmpi"
+    },
+    {
+        "username": "Alex Johnson",
+        "email": "alex.johnson@example.com",
+        "address": "789 Oak Dr, Austin, TX 78701",
+        "password": "$2y$10$XH92u\/4DSa9gBN75ezAXT.EXMV0eFVwiwLygeIfG42N5tFMRvXF\/a"
+    },
+    {
+        "username": "John Doe",
+        "email": "john.doe@example.com",
+        "address": "123 Elm St, Springfield, IL 62701",
+        "password": "$2y$10$vwH3rpfVM4Ptn9FSYAI7xOrftzJM4NBFEDyk6Ow3LCJcyWdw8UU2u"
+    }
+]

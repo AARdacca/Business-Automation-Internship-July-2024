@@ -63,7 +63,7 @@ class Index
 
         if (isset($_GET['checkout'])) {
             if (!$this->isLoggedIn()) {
-                header("Location: /assignment_6/user/login.php");
+                header("Location: /E_Commerce_Website_made_by_Ali_Ahasan_J2DFEEB/user/login.php");
                 exit;
             }
 
@@ -80,14 +80,16 @@ class Index
     public function homePage()
     {
         echo "<h3 style='display:inline;'><br><br><br>Home Page? </h3>
-        <a href='/assignment_6/user/'>Go to Home</a>";
+        <a href='/E_Commerce_Website_made_by_Ali_Ahasan_J2DFEEB/user/'>Go to Home</a>";
     }
 
     // Method to display a simple login page navigation link.
     public function loginPage()
     {
-        echo "<h3 style='display:inline;'><br><br><br>Login Access: </h3>
-        <a href='/assignment_6/user/'>Login</a>";
+        if (!$this->isLoggedIn()) {
+            echo "<h3 style='display:inline;'><br><br><br>Login Access: </h3>
+            <a href='/E_Commerce_Website_made_by_Ali_Ahasan_J2DFEEB/user/login.php'>Login</a>";
+        }
     }
 }
 
