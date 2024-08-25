@@ -111,6 +111,6 @@ $indexUser = new Index();
 </html>
 
 <?php
-$indexUser->allUserList();
 $indexUser->e_commercePage();
+$indexUser->allUserList();
 ?>

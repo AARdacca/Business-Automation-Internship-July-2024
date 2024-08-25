@@ -82,6 +82,13 @@ class Index
         echo "<h3 style='display:inline;'><br><br><br>Home Page? </h3>
         <a href='/assignment_6/user/'>Go to Home</a>";
     }
+
+    // Method to display a simple login page navigation link.
+    public function loginPage()
+    {
+        echo "<h3 style='display:inline;'><br><br><br>Login Access: </h3>
+        <a href='/assignment_6/user/'>Login</a>";
+    }
 }
 
 $e_commerceIndex = new Index;
@@ -133,4 +140,5 @@ $e_commerceIndex = new Index;
 <?php
 // Call to display the home page link.
 $e_commerceIndex->homePage();
+$e_commerceIndex->loginPage();
 ?>
