@@ -19,7 +19,7 @@ class Index
     }
 
     private function isLoggedIn()
-    {
+    {   
         return isset($_SESSION['logged_in']) && $_SESSION['logged_in'] == 1;
     }
 
