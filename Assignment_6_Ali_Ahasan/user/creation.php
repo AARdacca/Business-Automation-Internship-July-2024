@@ -3,6 +3,11 @@
 session_start();
 class Creation
 {
+    public function __construct()
+    {
+        $this->loginPage();
+        $this->homePage();
+    }
     public function loginPage()
     {
         // Link for existing users to log in
@@ -35,12 +40,9 @@ class Creation
         Password: <input type="password" name="password" required><br>
         <input type="submit" value="Register">
     </form>
+    <?php
+    $accountCreation = new Creation();
+    ?>
 </body>
 
 </html>
-
-<?php
-$accountCreation = new Creation();
-$accountCreation->loginPage();
-$accountCreation->homePage();
-?>

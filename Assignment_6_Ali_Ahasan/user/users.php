@@ -3,6 +3,16 @@
 session_start();
 class Users
 {
+    public function __construct()
+    {
+        $this->loadJSON();
+        $this->loadSessionCookie();
+        $this->deleteSpecefic();
+        $this->deleteAll();
+        $this->displayAll();
+        $this->deleteAllApply();
+        $this->homePage();
+    }
     // Ensure $_SESSION['users'] is initialized as an array if not already set
     public function loadJSON()
     {
@@ -79,12 +89,5 @@ class Users
 }
 
 $allUsers = new Users;
-$allUsers->loadJSON();
-$allUsers->loadSessionCookie();
-$allUsers->deleteSpecefic();
-$allUsers->deleteAll();
-$allUsers->displayAll();
-$allUsers->deleteAllApply();
-$allUsers->HomePage();
 
 ?> <?

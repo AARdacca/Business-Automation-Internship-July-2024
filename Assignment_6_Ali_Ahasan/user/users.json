@@ -1,38 +1,32 @@
 [
     {
+        "username": "Robert Miller",
+        "email": "robert.miller@example.com",
+        "address": "606 Aspen Rd, Denver, CO 80202",
+        "password": "$2y$10$\/anaR75WcaJ\/KcQZrhhc0u7TonpMhk4ZpKPiFY3LS2vyKkrtfKlTi"
+    },
+    {
         "username": "Sarah Smith",
         "email": "sarah.smith@example.com",
         "address": "456 Maple Ave, Dayton, OH 45402",
-        "password": "$2y$10$BiOCYkWlEfJ3\/rxZc7pgi.lW8DwFr6IpkHW40\/ss0LBwqjB5VQxvC"
+        "password": "$2y$10$mEuMBpZJ1ylv4glAe\/UZKeVoNC.qyzlzeK5gxSorcNDJKMycdDIyC"
+    },
+    {
+        "username": "John Doe",
+        "email": "john.doe@example.com",
+        "address": "123 Elm St, Springfield, IL 62701",
+        "password": "$2y$10$3aBKd1RHfWYyve2Oir4ge.f\/UoMv0iXCgRSowBk5mCd7lJIsCVQVy"
     },
     {
         "username": "Alex Johnson",
         "email": "alex.johnson@example.com",
         "address": "789 Oak Dr, Austin, TX 78701",
-        "password": "$2y$10$QvI1OjgvjJedWRHBR7IGNeZwkTJfPj73F2S7O.Yl8xCiqluGwMpWW"
+        "password": "$2y$10$1ZkLddcnKLc6RD2ApZ3LDOqI4G\/zMGdwAoyzYcgzU38iB6Cfixac2"
     },
     {
         "username": "Linda Brown",
         "email": "linda.brown@example.com",
         "address": "101 Pine Ln, Orlando, FL 32801",
-        "password": "$2y$10$XpjHCo8mRqbnNJ9ojIx\/6evQ51Nvs7Pt9VE7VxQPg8AGI.T1wi4IO"
-    },
-    {
-        "username": "David Wilson",
-        "email": "david.wilson@example.com",
-        "address": "202 Birch Blvd, Seattle, WA 98101",
-        "password": "$2y$10$9zVmPeDG9mYrUBU3uelYg.cY5NtMDLK3qNJxeIB8XR6NeODzXF06i"
-    },
-    {
-        "username": "Jessica Taylor",
-        "email": "jessica.taylor@example.com",
-        "address": "303 Cedar Ct, Madison, WI 53703",
-        "password": "$2y$10$z4xJCCVTygPFqhkhHx5jouTrJ043IJkFMdEHk\/f5c0X.vXreV6WpS"
-    },
-    {
-        "username": "Michael Davis",
-        "email": "michael.davis@example.com",
-        "address": "404 Spruce St, Phoenix, AZ 85001",
-        "password": "$2y$10$vLro7EjANE3TXaJvHDLd1Oyv1GBvhcJh6e8CbEGYUhUPN.s1Z0lr6"
+        "password": "$2y$10$7F\/a.jvgPiQesZzhCoY5QuoT8dk1QDAjTVaTVmBJ.Hmsv85u9IKhO"
     }
 ]

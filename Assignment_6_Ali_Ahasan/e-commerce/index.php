@@ -20,7 +20,7 @@ class Index
 
     private function isLoggedIn()
     {
-        return isset($_SESSION['logged_in_check']) && $_SESSION['logged_in_check'] == 1;
+        return isset($_SESSION['logged_in']) && $_SESSION['logged_in'] == 1;
     }
 
     private function loadProducts()
@@ -57,7 +57,7 @@ class Index
 
         if (isset($_GET['checkout'])) {
             if (!$this->isLoggedIn()) {
-                header("Location: user/login.php");
+                header("Location: /assignment_6/user/login.php");
                 exit;
             }
 

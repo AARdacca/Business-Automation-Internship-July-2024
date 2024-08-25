@@ -3,6 +3,12 @@
 session_start();
 class Logout
 {
+    public function __construct()
+    {
+        $this->unsetAllSessionVariable();
+        $this->setStatFalseStoreCookie();
+        $this->homePage();
+    }
     public function unsetAllSessionVariable()
     {
         // Unset all session variables related to user login
@@ -13,8 +19,11 @@ class Logout
     {
         // Set logged_in status to "false" and store in a cookie
         $_SESSION['logged_in_check'] = "false";
-        setcookie('logged_in_check', "false", time() + (86400 * 30), "/"); // Cookie expires in 30 days
+        setcookie('logged_in_check', "", time() - 3600, "/");  // Expire the cookie
+        setcookie('username', "", time() - 3600, "/");
+        setcookie('email', "", time() - 3600, "/");
     }
+
     public function homePage()
     {
         // Redirect to the homepage after logout
@@ -22,8 +31,7 @@ class Logout
         exit;
     }
 }
+
 $logout = new Logout();
-$logout->unsetAllSessionVariable();
-$logout->setStatFalseStoreCookie();
-$logout->homePage();
+
 ?> <?

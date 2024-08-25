@@ -3,6 +3,10 @@
 session_start();
 class Register
 {
+    public function __construct()
+    {
+        $this->registerApply();
+    }
     public function registerApply()
     {
         // Process the form data if the form was submitted
@@ -25,15 +29,12 @@ class Register
             file_put_contents("users.json", json_encode($_SESSION['users'], JSON_PRETTY_PRINT));
 
             // Redirect to the users list page after registration
-            header("Location: users.php");
+            header("Location: login.php");
             exit();
         }
     }
 }
 
 $register = new Register;
-$register->registerApply();
 
-?>
-
-<?
+?> <?

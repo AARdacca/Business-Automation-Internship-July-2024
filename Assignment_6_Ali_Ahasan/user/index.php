@@ -3,6 +3,12 @@
 session_start();
 class Index
 {
+    public function __construct()
+    {
+        $this->loadCookieToSession();
+        $this->setLoggedInStatus();
+        $this->automaticLogInOut();
+    }
     // Function to find a user by email from session data
     private function findUserByEmail($email)
     {
@@ -18,17 +24,34 @@ class Index
     {
         // Load users from cookie to session if session users are not set
         if (!isset($_SESSION['users']) && isset($_COOKIE['user_data'])) {
-            $_SESSION['users'] = unserialize($_COOKIE['user_data']);
+            $cookieData = json_decode($_COOKIE['user_data'], true);
+            if (is_array($cookieData)) { // Ensure the decoded data is an array
+                $_SESSION['users'] = $cookieData;
+            } else {
+                // Handle error or log issue
+                error_log('Invalid cookie data format');
+            }
         }
     }
 
     public function setLoggedInStatus()
     {
-        // Set or update logged-in status from cookie
-        $_SESSION['logged_in_check'] = $_COOKIE['logged_in_check'];
+        // Check if the logged_in_check cookie is set and true
+        if (isset($_COOKIE['logged_in_check']) && $_COOKIE['logged_in_check'] == 'true') {
+            if (!isset($_SESSION['logged_in']) && isset($_COOKIE['username']) && isset($_COOKIE['email'])) {
+                $_SESSION['logged_in'] = true;
+                $_SESSION['username'] = $_COOKIE['username'];
+                $_SESSION['email'] = $_COOKIE['email'];
+            }
+        } else {
+            $_SESSION['logged_in'] = false;
+            unset($_SESSION['username']);
+            unset($_SESSION['email']);
+        }
     }
 
-    public function AutomaticLogInOut()
+
+    public function automaticLogInOut()
     {
         // Automatically log in the first user if no one is logged in but users exist
         if (isset($_SESSION['logged_in_check']) && $_SESSION['logged_in_check'] == 1) {
@@ -60,16 +83,15 @@ class Index
                 <a href='users.php'>Users</a>";
     }
 
-    public function e_commercePage() {
+    public function e_commercePage()
+    {
         // Link to the e-commerce page
         echo "  <h3 style='display:inline;'><br><br><br>Online Shop: </h3>
                 <a href='/assignment_6/e-commerce/'>Shop</a>";
     }
 }
+
 $indexUser = new Index();
-$indexUser->loadCookieToSession();
-$indexUser->setLoggedInStatus();
-$indexUser->AutomaticLogInOut();
 
 ?>
 

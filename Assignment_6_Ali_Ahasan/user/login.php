@@ -3,8 +3,12 @@
 session_start();
 class Login
 {
+    public function __construct()
+    {
+        $this->authenticate();
+    }
     // Check if the form is submitted
-    public function authenticate()
+    private function authenticate()
     {
         if ($_SERVER["REQUEST_METHOD"] == "POST") {
             // Load users from the JSON file
@@ -15,10 +19,15 @@ class Login
             foreach ($users as $user) {
                 // Validate email and password
                 if ($user['email'] === $_POST['email'] && password_verify($_POST['password'], $user['password'])) {
-                    // Set session and cookie for the logged-in user
+                    // Set session and cookies for the logged-in user
                     $_SESSION['logged_in'] = true;
                     $_SESSION['username'] = $user['username'];
-                    setcookie('logged_in_check', true, time() + (86400 * 30), "/"); // 30-day cookie
+                    $_SESSION['email'] = $user['email'];
+
+                    setcookie('logged_in_check', 'true', time() + (86400 * 30), "/");
+                    setcookie('username', $user['username'], time() + (86400 * 30), "/");
+                    setcookie('email', $user['email'], time() + (86400 * 30), "/");
+
                     // Redirect to homepage after successful login
                     header("Location: index.php");
                     exit();
@@ -29,21 +38,22 @@ class Login
         }
     }
 
-    public function accountCreationPage() {
-    // Link for users to create a new account
-    echo "<h3 style='display:inline;'><br><br><br>Not a user? </h3>
+    public function accountCreationPage()
+    {
+        // Link for users to create a new account
+        echo "<h3 style='display:inline;'><br><br><br>Not a user? </h3>
           <span><a href='creation.php'>Create an account now.</a></span>";
     }
 
-    public function homePage() {
-    // Link to the home page
-    echo "<h3 style='display:inline;'><br><br><br>Home Page? </h3>
+    public function homePage()
+    {
+        // Link to the home page
+        echo "<h3 style='display:inline;'><br><br><br>Home Page? </h3>
           <a href='index.php'>Go to Home</a>";
     }
 }
 
 $login = new Login();
-$login->authenticate();
 
 ?>
 <!DOCTYPE html>
