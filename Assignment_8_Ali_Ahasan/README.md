@@ -88,10 +88,10 @@ This is a Laravel-based e-commerce website.
 Laravel Version 11.
 ## Extracting and Placing the Project
 1. After downloading the zipped project, extract it.
-2. Move the extracted `Todo Laravel App` project folder into the `htdocs` directory of your local server environment.
+2. Move the extracted `Newsoft Laravel App` project folder into the `htdocs` directory of your local server environment.
 
 ## Opening and Setting Up the Project
-1. Open the `Todo Laravel App` folder using PowerShell, or use VS Code which has a pre-installed PowerShell terminal.
+1. Open the `Newsoft Laravel App` folder using PowerShell, or use VS Code which has a pre-installed PowerShell terminal.
 2. Execute the following commands in your terminal to set up the project environment:
 
     ```powershell
@@ -124,7 +124,7 @@ Laravel Version 11.
     ```
 4. Open the provided link in your browser to view the application.
 
-Follow these instructions to properly set up and configure your Todo Laravel App project.
+Follow these instructions to properly set up and configure your Newsoft Laravel App project.
 
 ## Further Assistance
 
