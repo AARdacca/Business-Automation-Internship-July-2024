@@ -1,4 +1,4 @@
-# To-Do Laravel App Project Setup Guide
+# To-Do Laravel AJAX App Project Setup Guide
 
 This is a guide.
 
